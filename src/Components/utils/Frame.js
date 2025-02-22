@@ -11,16 +11,17 @@ class Frame {
     vreeStore.frameTransparency = vreeStore.frameMesh.material.opacity;
   }
 
-  updateFrameTexture(texturePath, textureName) {
+  static updateFrameTexture(texturePath, textureName) {
     vreeStore.frameTexture = textureName;
     const loader = new THREE.TextureLoader();
     loader.load(texturePath, (texture) => {
       texture.colorSpace = THREE.SRGBColorSpace;
       vreeStore.frameMesh.material.map = texture;
+      vreeStore.frameMesh.material.needsUpdate = true;
     });
   }
 
-  updateFrameColor(color) {
+  static updateFrameColor(color) {
     vreeStore.frameColor = color;
     vreeStore.frameMesh.material.color = new THREE.Color(color);
   }

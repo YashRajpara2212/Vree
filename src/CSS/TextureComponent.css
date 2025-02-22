@@ -1,0 +1,50 @@
+/* TextureComponent.css */
+.texture-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .texture-option {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    font-size: 14px;
+    color: #333;
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+  
+  .texture-option:hover {
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.6); /* White hover shadow */
+  }
+  
+  .texture-option.selected {
+    box-shadow: 0 0 15px 5px rgba(0, 0, 255, 0.6); /* Blue selection shadow */
+  }
+  
+  .texture-option:nth-child(1) {
+    background-color: #ddd; /* For "None" option */
+  }
+  
+  .texture-option:nth-child(2) {
+    background-color: #eee; /* For "Texture 1" option */
+  }
+  
+  .texture-option:nth-child(3) {
+    background-color: #eee; /* For "Texture 2" option */
+  }
+  
+  .texture-option:nth-child(4) {
+    background-color: #eee; /* For "Texture 3" option */
+  }
+  

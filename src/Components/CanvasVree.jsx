@@ -7,6 +7,7 @@ import { LoaderManager } from "../Loader";
 import Frame from "./utils/Frame";
 import Lenses from "./utils/Lenses";
 import Temple from "./utils/Temple";
+// import { vreeStore } from "../VreeStore";
 
 const CanvasVree = () => {
   const canvasRef = useRef(null);
@@ -107,7 +108,7 @@ const CanvasVree = () => {
       renderer.render(scene, camera);
     };
 
-    animate();
+    // animate();
 
     // Handle window resizing
     const handleResize = () => {
