@@ -1,13 +1,14 @@
 import { useState } from "react";
 import Frame from "./utils/Frame";
 import Temple from "./utils/Temple";
-import { Texture } from "three";
+// import { Texture } from "three";
 
 const TextureComponent = ({ selectedSection }) => {
   const [selectedTexture, setSelectedTexture] = useState(null);
 
+  //   /assets/texture/null_image.svg
   const textures = [
-    { texturePath: "/assets/texture/null_image.svg", textureName: "null" },
+    { texturePath: "/assets/texture/2342.jpg", textureName: "null" },
     {
       texturePath: "/assets/texture/original.jpg",
       textureName: "original.jpg",
@@ -16,7 +17,7 @@ const TextureComponent = ({ selectedSection }) => {
     { texturePath: "/assets/texture/texture2.jpg", textureName: "texture2" },
   ];
   const handleSelectTexture = (TextureName, TexturePath) => {
-    console.log(TexturePath, TextureName, "name and path");
+    console.log(TexturePath, TextureName, "path and name");
     setSelectedTexture(TextureName);
     if (selectedSection === "frame") {
       Frame.updateFrameTexture(TexturePath, TextureName);
@@ -28,7 +29,7 @@ const TextureComponent = ({ selectedSection }) => {
   };
   return (
     <>
-      <div className="flex space-x-13 overflow-x-auto p-4">
+      <div className="flex space-x-7 overflow-x-auto p-4">
         {textures.map((texture) => (
           <div
             key={texture.textureName}

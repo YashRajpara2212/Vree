@@ -7,7 +7,7 @@ import { SketchPicker } from "react-color";
 import { vreeStore } from "../VreeStore";
 
 const ColorComponent = ({ selectedSection }) => {
-  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedColor, setSelectedColor] = useState("#FFFFFF");
   const [showColorPicker, setShowColorPicker] = useState(false); // For showing the color picker
   const colors = [
     "#FFFFFF",
@@ -20,27 +20,41 @@ const ColorComponent = ({ selectedSection }) => {
   ];
 
   const handleColorSelect = (color) => {
+    if (!color || !color.hex) {
+      console.error("Invalid color object:", color);
+      return;
+    }
     setSelectedColor(color.hex); // Set the selected color
     // Apply color based on the selected section (frame, temple, or lense)
     if (selectedSection === "frame") {
       Frame.updateFrameColor(color.hex);
-    //   console.log(vreeStore.frameColor, "frameColor");
+      console.log(vreeStore.frameColor, "frameColor");
+      console.log(vreeStore.frameTexture, "frameColor");
+      //   console.log(vreeStore.frameColor, "frameColor");
+      //   console.log(vreeStore.frameColor, "frameColor");
+      //   console.log(vreeStore.frameColor, "frameColor");
     } else if (selectedSection === "temple") {
       Temple.updateTempleColor(color.hex);
     } else if (selectedSection === "lense") {
       Lenses.updateLenseColor(color.hex);
     }
+    // setShowColorPicker(false);
   };
 
   const handleCustomColorClick = () => {
-    setShowColorPicker(!showColorPicker); // Toggle the color picker visibility
+    // if (!showColorPicker) {
+    //   setShowColorPicker(true);
+    // }
+    // Toggle the color picker visibility
+    setShowColorPicker(!showColorPicker);
   };
 
   return (
     <>
-      <div className="flex flex-col items-center p-4">
+    {/* items-center */}
+      <div className="flex flex-col  p-4">
         {/* Color palette */}
-        <div className="flex space-x-4 mb-4">
+        <div className="flex space-x-7 mb-4">
           {colors.map((color, index) => (
             <div
               key={index}

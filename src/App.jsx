@@ -2,14 +2,18 @@ import "./App.css";
 import CanvasVree from "./Components/CanvasVree";
 import TextureComponent from "./Components/TextureComponent";
 import ColorComponent from "./Components/ColorComponent";
+import ProgressBar from "./Components/ProgressBarComponent";
+import FrameComponent from "./Components/FrameComponent";
 
 function App() {
   return (
-    <div className="flex">
+    <div className="">
       <CanvasVree />
 
-      <TextureComponent selectedSection="frame" />
-      <ColorComponent selectedSection="frame" />
+      <FrameComponent />
+      {/* <TextureComponent selectedSection="frame" /> */}
+      {/* <ColorComponent selectedSection="frame" /> */}
+      {/* <ProgressBar /> */}
     </div>
   );
 }
