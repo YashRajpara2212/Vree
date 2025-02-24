@@ -8,13 +8,26 @@ const TextureComponent = ({ selectedSection }) => {
 
   //   /assets/texture/null_image.svg
   const textures = [
-    { texturePath: "/assets/texture/2342.jpg", textureName: "null" },
+    {
+      texturePath: "/assets/texture/2342.jpg",
+      textureName: "null",
+      textureImage: "/assets/texture/null_image.svg",
+    },
     {
       texturePath: "/assets/texture/original.jpg",
       textureName: "original.jpg",
+      textureImage: "/assets/texture/original.jpg",
     },
-    { texturePath: "/assets/texture/texture1.png", textureName: "texture1" },
-    { texturePath: "/assets/texture/texture2.jpg", textureName: "texture2" },
+    {
+      texturePath: "/assets/texture/texture1.png",
+      textureName: "texture1",
+      textureImage: "/assets/texture/texture1.png",
+    },
+    {
+      texturePath: "/assets/texture/texture2.jpg",
+      textureName: "texture2",
+      textureImage: "/assets/texture/texture2.jpg",
+    },
   ];
   const handleSelectTexture = (TextureName, TexturePath) => {
     console.log(TexturePath, TextureName, "path and name");
@@ -29,7 +42,8 @@ const TextureComponent = ({ selectedSection }) => {
   };
   return (
     <>
-      <div className="flex space-x-7 overflow-x-auto p-4">
+      <div className="text-white text-xl font-bold">Texture</div>
+      <div className="mx-5 my-3 flex space-x-13 overflow-x-auto p-4">
         {textures.map((texture) => (
           <div
             key={texture.textureName}
@@ -38,7 +52,7 @@ const TextureComponent = ({ selectedSection }) => {
                 ? "border-4 border-blue-500 scale-95"
                 : "hover:border-4 hover:border-white hover:scale-95"
             }`}
-            style={{ backgroundImage: `url(${texture.texturePath})` }}
+            style={{ backgroundImage: `url(${texture.textureImage})` }}
             onClick={() =>
               handleSelectTexture(texture.textureName, texture.texturePath)
             }

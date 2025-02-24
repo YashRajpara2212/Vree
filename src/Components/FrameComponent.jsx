@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import ProgressBarComponent from './ProgressBarComponent'
 import ColorComponent from './ColorComponent'
 import TextureComponent from './TextureComponent'

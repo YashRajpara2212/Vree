@@ -7,7 +7,7 @@ import { vreeStore } from "./VreeStore";
 export class LoaderManager {
   constructor() {
     this.loadedAssets = {
-      backgroundTexture: false,
+      // backgroundTexture: false,
       environmentTexture: false,
       gltfModel: false,
     };
@@ -24,14 +24,14 @@ export class LoaderManager {
   }
 
   // Function to load a texture (background)
-  loadTexture(path) {
-    const loader = new THREE.TextureLoader();
-    loader.load(path, (texture) => {
-      texture.colorSpace = THREE.SRGBColorSpace;
-      this.loadedAssets.backgroundTexture = texture;
-      this.checkAssetsLoaded();
-    });
-  }
+  // loadTexture(path) {
+  //   const loader = new THREE.TextureLoader();
+  //   loader.load(path, (texture) => {
+  //     texture.colorSpace = THREE.SRGBColorSpace;
+  //     this.loadedAssets.backgroundTexture = texture;
+  //     this.checkAssetsLoaded();
+  //   });
+  // }
 
   // Function to load the environment HDR texture
   loadEnvironmentTexture(path) {
@@ -50,6 +50,8 @@ export class LoaderManager {
       this.loadedAssets.gltfModel = gltf.scene;
       //frameMesh is set
       vreeStore.frameMesh = this.loadedAssets.gltfModel.children[0];
+      vreeStore.frameIntialTexture = this.loadedAssets.gltfModel.children[0].material.map;
+      vreeStore.templeIntialTexture=this.loadedAssets.gltfModel.children[0].children[1].material.map;
       console.log(this.loadedAssets.gltfModel.children[0], "gltfModel");
 
       //   console.log(vreeStore.frameMesh, "frameMesh");
@@ -60,9 +62,11 @@ export class LoaderManager {
 
   // Function to check if all assets are loaded
   checkAssetsLoaded() {
-    const { backgroundTexture, environmentTexture, gltfModel } =
+    //backgroundTexture,
+    const {  environmentTexture, gltfModel } =
       this.loadedAssets;
-    if (backgroundTexture && environmentTexture && gltfModel) {
+      //backgroundTexture &&
+    if ( environmentTexture && gltfModel) {
       this.addAssetsToScene();
     }
   }

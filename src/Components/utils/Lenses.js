@@ -10,16 +10,16 @@ class Lenses {
 
   }
 
-  updateLensesColor(color) {
+  static updateLensesColor(color) {
     vreeStore.lensColor = color;
     vreeStore.lensesMesh[0].material.color = new THREE.Color(color);
     vreeStore.lensesMesh[1].material.color = new THREE.Color(color);
   }
 
-  updateLensesTransparency(transparency) {
+  static updateLensesTransparency(transparency) {
     vreeStore.lensTransparency = transparency;
-    vreeStore.lensesMesh[0].material.opacity = transparency;
-    vreeStore.lensesMesh[1].material.opacity = transparency;
+    vreeStore.lensesMesh[0].material.opacity = 1 - transparency;
+    vreeStore.lensesMesh[1].material.opacity = 1 - transparency;
   }
 }
 

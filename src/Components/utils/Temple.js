@@ -16,24 +16,29 @@ class Temple {
 
   static updateTempleTexture(texturePath, textureName) {
     vreeStore.templeTexture = textureName;
-    const loader = new THREE.TextureLoader();
-    loader.load(texturePath, (texture) => {
-      texture.colorSpace = THREE.SRGBColorSpace;
-      texture.encoding = THREE.sRGBEncoding;
-      texture.repeat.set(1, 1);
-      texture.wrapS = THREE.RepeatWrapping; // Ensures that the texture is clamped to the edge (no repeat on edges)
-      texture.wrapT = THREE.RepeatWrapping
-      texture.minFilter = THREE.LinearMipMapLinearFilter;
-      texture.magFilter = THREE.LinearFilter;
+    if (textureName === "original.jpg") {
+      vreeStore.templeMesh[0].material.map = vreeStore.templeIntialTexture;
+      vreeStore.templeMesh[1].material.map = vreeStore.templeIntialTexture;
+    } else {
+      const loader = new THREE.TextureLoader();
+      loader.load(texturePath, (texture) => {
+        texture.colorSpace = THREE.SRGBColorSpace;
+        texture.encoding = THREE.sRGBEncoding;
+        texture.repeat.set(1, 1);
+        texture.wrapS = THREE.RepeatWrapping; // Ensures that the texture is clamped to the edge (no repeat on edges)
+        texture.wrapT = THREE.RepeatWrapping;
+        texture.minFilter = THREE.LinearMipMapLinearFilter;
+        texture.magFilter = THREE.LinearFilter;
 
-      vreeStore.templeMesh[0].material.map = texture;
-      vreeStore.templeMesh[1].material.map = texture;
+        vreeStore.templeMesh[0].material.map = texture;
+        vreeStore.templeMesh[1].material.map = texture;
 
-      // Ensure the texture is properly applied to the material
-      vreeStore.templeMesh[0].material.needsUpdate = true;
-      vreeStore.templeMesh[1].material.needsUpdate = true;
-      console.log(vreeStore.templeMesh, "templeTexture");
-    });
+        // Ensure the texture is properly applied to the material
+        vreeStore.templeMesh[0].material.needsUpdate = true;
+        vreeStore.templeMesh[1].material.needsUpdate = true;
+        console.log(vreeStore.templeMesh, "templeTexture");
+      });
+    }
   }
 
   static updateTempleColor(color) {
@@ -42,22 +47,27 @@ class Temple {
     vreeStore.templeMesh[1].material.color = new THREE.Color(color);
   }
 
-  updateTempleMetalness(metalness) {
+  static updateTempleMetalness(metalness) {
     vreeStore.templeMetalness = metalness;
     vreeStore.templeMesh[0].material.metalness = metalness;
     vreeStore.templeMesh[1].material.metalness = metalness;
   }
 
-  updateTempleRoughness(roughness) {
+  static updateTempleRoughness(roughness) {
     vreeStore.templeRoughness = roughness;
     vreeStore.templeMesh[0].material.roughness = roughness;
     vreeStore.templeMesh[1].material.roughness = roughness;
   }
 
-  updateTempleTransparency(transparency) {
+  static updateTempleTransparency(transparency) {
+    console.log(vreeStore.templeMesh[0], "firstmesh");
     vreeStore.templeTransparency = transparency;
-    vreeStore.templeMesh[0].material.opacity = transparency;
-    vreeStore.templeMesh[1].material.opacity = transparency;
+    vreeStore.templeMesh[0].material.transparent = true;
+    vreeStore.templeMesh[1].material.transparent = true;
+    vreeStore.templeMesh[0].material.opacity = 1 - transparency;
+    vreeStore.templeMesh[1].material.opacity = 1 - transparency;
+    vreeStore.templeMesh[0].material.needsUpdate = true;
+    vreeStore.templeMesh[1].material.needsUpdate = true;
   }
 }
 

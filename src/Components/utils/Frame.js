@@ -13,28 +13,40 @@ class Frame {
 
   static updateFrameTexture(texturePath, textureName) {
     vreeStore.frameTexture = textureName;
-    const loader = new THREE.TextureLoader();
-    loader.load(texturePath, (texture) => {
-      // texture.colorSpace = THREE.SRGBColorSpace;
-      // texture.encoding = THREE.sRGBEncoding;
-      // texture.repeat.set(0.3, 0.3);
-      // texture.wrapS = THREE.RepeatWrapping; // Ensures that the texture is clamped to the edge (no repeat on edges)
-      // texture.wrapT = THREE.RepeatWrapping;
-      // texture.minFilter = THREE.LinearFilter;
-      // texture.magFilter = THREE.LinearFilter;
-
-      //THREE.ClampToEdgeWrapping
-      // texture.repeat.set(1, 1);
-      // texture.wrapS = THREE.ClampToEdgeWrapping; // Ensures that the texture is clamped to the edge (no repeat on edges)
-      // texture.wrapT = THREE.ClampToEdgeWrapping;
-      //THREE.LinearFilter
-      // texture.minFilter = THREE.LinearFilter;
-      // texture.magFilter = THREE.LinearFilter;
-      texture.colorSpace = THREE.SRGBColorSpace;
-      vreeStore.frameMesh.material.map = texture;
+    if (textureName === "original.jpg") {
+      vreeStore.frameMesh.material.map = vreeStore.frameIntialTexture;
       vreeStore.frameMesh.material.needsUpdate = true;
-      console.log(vreeStore.frameMesh, "frameTexture");
-    });
+    } else {
+      const loader = new THREE.TextureLoader();
+      loader.load(texturePath, (texture) => {
+        texture.colorSpace = THREE.SRGBColorSpace;
+        texture.encoding = THREE.sRGBEncoding;
+        texture.repeat.set(1, 1);
+        texture.wrapS = THREE.RepeatWrapping; // Ensures that the texture is clamped to the edge (no repeat on edges)
+        texture.wrapT = THREE.RepeatWrapping;
+        texture.minFilter = THREE.LinearMipMapLinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        // texture.colorSpace = THREE.SRGBColorSpace;
+        // texture.encoding = THREE.sRGBEncoding;
+        // texture.repeat.set(0.3, 0.3);
+        // texture.wrapS = THREE.RepeatWrapping; // Ensures that the texture is clamped to the edge (no repeat on edges)
+        // texture.wrapT = THREE.RepeatWrapping;
+        // texture.minFilter = THREE.LinearFilter;
+        // texture.magFilter = THREE.LinearFilter;
+
+        //THREE.ClampToEdgeWrapping
+        // texture.repeat.set(1, 1);
+        // texture.wrapS = THREE.ClampToEdgeWrapping; // Ensures that the texture is clamped to the edge (no repeat on edges)
+        // texture.wrapT = THREE.ClampToEdgeWrapping;
+        //THREE.LinearFilter
+        // texture.minFilter = THREE.LinearFilter;
+        // texture.magFilter = THREE.LinearFilter;
+        // texture.colorSpace = THREE.SRGBColorSpace;
+        vreeStore.frameMesh.material.map = texture;
+        vreeStore.frameMesh.material.needsUpdate = true;
+        console.log(vreeStore.frameMesh, "frameTexture");
+      });
+    }
   }
 
   static updateFrameColor(color) {
@@ -48,14 +60,14 @@ class Frame {
     vreeStore.frameMesh.material.metalness = metalness;
   }
 
-  updateFrameRoughness(roughness) {
+  static updateFrameRoughness(roughness) {
     vreeStore.frameRoughness = roughness;
     vreeStore.frameMesh.material.roughness = roughness;
   }
 
-  updateFrameTransparency(transparency) {
+  static updateFrameTransparency(transparency) {
     vreeStore.frameTransparency = transparency;
-    vreeStore.frameMesh.material.opacity = transparency;
+    vreeStore.frameMesh.material.opacity = 1 - transparency;
   }
 }
 

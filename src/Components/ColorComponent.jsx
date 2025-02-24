@@ -36,7 +36,7 @@ const ColorComponent = ({ selectedSection }) => {
     } else if (selectedSection === "temple") {
       Temple.updateTempleColor(color.hex);
     } else if (selectedSection === "lense") {
-      Lenses.updateLenseColor(color.hex);
+      Lenses.updateLensesColor(color.hex);
     }
     // setShowColorPicker(false);
   };
@@ -50,15 +50,16 @@ const ColorComponent = ({ selectedSection }) => {
   };
 
   return (
-    <>
-    {/* items-center */}
-      <div className="flex flex-col  p-4">
+    <div className="">
+      {/* items-center */}
+      <div className="text-white text-xl font-bold ">Color</div>
+      <div className="flex flex-col   p-4">
         {/* Color palette */}
-        <div className="flex space-x-7 mb-4">
+        <div className="flex flex-wrap space-x-13   mx-5 my-3 overflow-x-auto mb-4">
           {colors.map((color, index) => (
             <div
               key={index}
-              className={`w-13 h-13 rounded-full bg-cover bg-center transition-all duration-300 ${
+              className={`w-13 h-13 my-3 rounded-full bg-cover bg-center transition-all duration-300 ${
                 selectedColor === color
                   ? "border-4 border-blue-500"
                   : "hover:border-4 hover:border-white"
@@ -92,7 +93,7 @@ const ColorComponent = ({ selectedSection }) => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

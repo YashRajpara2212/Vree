@@ -21,8 +21,8 @@ const CanvasVree = () => {
 
     const camera = new THREE.PerspectiveCamera(
       75,
-      window.innerWidth / window.innerHeight,
-      0.1,
+      ((window.innerWidth * 0.6) / window.innerHeight) ,
+      0.01,
       1000
     );
 
@@ -31,6 +31,7 @@ const CanvasVree = () => {
     //Lights
     const ambientLight = new THREE.AmbientLight(0xffffff, 10);
     scene.add(ambientLight);
+    
 
     //All Loader
 
@@ -72,8 +73,9 @@ const CanvasVree = () => {
 
     const renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.current,
+      alpha: true,
     });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.innerWidth * 0.6, window.innerHeight );
 
     // Create loader manager
     const loaderManager = new LoaderManager();
@@ -89,7 +91,7 @@ const CanvasVree = () => {
     });
 
     // Load assets
-    loaderManager.loadTexture("/assets/background/background.png");
+    // loaderManager.loadTexture("/assets/background/background.png");
     loaderManager.loadEnvironmentTexture(
       "/assets/environment/brown_photostudio_02_1k.hdr"
     );
@@ -112,7 +114,7 @@ const CanvasVree = () => {
 
     // Handle window resizing
     const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.aspect = window.innerWidth*0.6 / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
