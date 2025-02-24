@@ -43,7 +43,7 @@ const TextureComponent = ({ selectedSection }) => {
   return (
     <>
       <div className="text-white text-xl font-bold">Texture</div>
-      <div className="mx-5 my-3 flex space-x-13 overflow-x-auto p-4">
+      <div className="mx-5 my-3 flex space-x-12 overflow-x-auto p-4">
         {textures.map((texture) => (
           <div
             key={texture.textureName}

@@ -4,16 +4,20 @@ import ColorComponent from './ColorComponent'
 import TextureComponent from './TextureComponent'
 import { vreeStore } from '../VreeStore'
 import Frame from './utils/Frame'
+import { observer } from 'mobx-react'
 
-const FrameComponent = () => {
+const FrameComponent = observer(() => {
   return (
     <div>
         <TextureComponent selectedSection="frame"/>
         <ColorComponent selectedSection="frame"/>
-        <ProgressBarComponent value ={vreeStore.frameMetalness} onChange={Frame.updateFrameMetalness} />
+        <div className="text-white text-xl font-bold mb-10">Material Properties</div>
+        <ProgressBarComponent name="Metallic" value ={vreeStore.frameMetalness} onChange={Frame.updateFrameMetalness} />
+        <ProgressBarComponent name="Roughness" value ={vreeStore.frameRoughness} onChange={Frame.updateFrameRoughness} />
+        <ProgressBarComponent  name="Transparency" value ={vreeStore.frameTransparency} onChange={Frame.updateFrameTransparency} />
       
     </div>
   )
-}
+})
 
 export default FrameComponent

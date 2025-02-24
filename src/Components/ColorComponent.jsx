@@ -1,4 +1,3 @@
-// import React from 'react'
 import Lenses from "./utils/Lenses";
 import Frame from "./utils/Frame";
 import Temple from "./utils/Temple";
@@ -9,6 +8,8 @@ import { vreeStore } from "../VreeStore";
 const ColorComponent = ({ selectedSection }) => {
   const [selectedColor, setSelectedColor] = useState("#FFFFFF");
   const [showColorPicker, setShowColorPicker] = useState(false); // For showing the color picker
+  const [pickerPosition, setPickerPosition] = useState({ top: 0, left: 0 });
+
   const colors = [
     "#FFFFFF",
     "#D5BC93",
@@ -30,32 +31,31 @@ const ColorComponent = ({ selectedSection }) => {
       Frame.updateFrameColor(color.hex);
       console.log(vreeStore.frameColor, "frameColor");
       console.log(vreeStore.frameTexture, "frameColor");
-      //   console.log(vreeStore.frameColor, "frameColor");
-      //   console.log(vreeStore.frameColor, "frameColor");
-      //   console.log(vreeStore.frameColor, "frameColor");
     } else if (selectedSection === "temple") {
       Temple.updateTempleColor(color.hex);
     } else if (selectedSection === "lense") {
       Lenses.updateLensesColor(color.hex);
     }
-    // setShowColorPicker(false);
   };
 
-  const handleCustomColorClick = () => {
-    // if (!showColorPicker) {
-    //   setShowColorPicker(true);
-    // }
-    // Toggle the color picker visibility
+  const handleCustomColorClick = (e) => {
+    // Get the position of the clicked element
+    const rect = e.target.getBoundingClientRect();
+    // Calculate the position to place the color picker below the clicked element
+    setPickerPosition({
+      top: rect.bottom + window.scrollY, // Below the element
+      left: rect.left + window.scrollX, // Align with the left of the element
+    });
+    // Toggle the visibility of the color picker
     setShowColorPicker(!showColorPicker);
   };
 
   return (
     <div className="">
-      {/* items-center */}
-      <div className="text-white text-xl font-bold ">Color</div>
-      <div className="flex flex-col   p-4">
+      <div className="text-white text-xl font-bold">Color</div>
+      <div className="flex flex-col p-4">
         {/* Color palette */}
-        <div className="flex flex-wrap space-x-13   mx-5 my-3 overflow-x-auto mb-4">
+        <div className="flex flex-wrap space-x-12 mx-5 my-3 overflow-x-auto mb-4">
           {colors.map((color, index) => (
             <div
               key={index}
@@ -64,7 +64,6 @@ const ColorComponent = ({ selectedSection }) => {
                   ? "border-4 border-blue-500"
                   : "hover:border-4 hover:border-white"
               }`}
-              // Apply backgroundColor or backgroundImage based on color
               style={{
                 backgroundColor: color === "Custom" ? "#FFFFFF" : color,
                 backgroundImage:
@@ -72,9 +71,9 @@ const ColorComponent = ({ selectedSection }) => {
                     ? `url('/assets/texture/custom.png')`
                     : "none",
               }}
-              onClick={() => {
+              onClick={(e) => {
                 if (color === "Custom") {
-                  handleCustomColorClick(); // Show color picker when "Custom" is clicked
+                  handleCustomColorClick(e); // Show color picker when "Custom" is clicked
                 } else {
                   handleColorSelect({ hex: color }); // Apply the selected predefined color
                 }
@@ -85,7 +84,13 @@ const ColorComponent = ({ selectedSection }) => {
 
         {/* Color Picker for Custom Color */}
         {showColorPicker && (
-          <div className="absolute top-60 left-100 z-50">
+          <div
+            className="absolute z-50"
+            style={{
+              top: pickerPosition.top + "px", // Position the picker dynamically
+              left: pickerPosition.left + "px", // Align the picker with the clicked element
+            }}
+          >
             <SketchPicker
               color={selectedColor} // Initial color for the color picker
               onChangeComplete={handleColorSelect} // Set color when user selects from the color picker

@@ -67,7 +67,10 @@ class Frame {
 
   static updateFrameTransparency(transparency) {
     vreeStore.frameTransparency = transparency;
+    vreeStore.frameMesh.material.transparent = true;
+
     vreeStore.frameMesh.material.opacity = 1 - transparency;
+    vreeStore.frameMesh.material.needsUpdate = true;
   }
 }
 
