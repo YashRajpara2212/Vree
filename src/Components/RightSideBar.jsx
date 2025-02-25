@@ -7,9 +7,11 @@ import { observer } from "mobx-react";
 
 const RightSideBar = observer(() => {
   const [selectedComponent, setSelectedComponent] = useState("frame");
-
+// vreeStore.selectedPart = "frame"
+  
   const handleButtonClick = (component) => {
     setSelectedComponent(component);
+    vreeStore.selectedPart = component;
   };
 
   const handleReset = () => {
@@ -61,7 +63,7 @@ const RightSideBar = observer(() => {
           </span>
         </div>
       </div>
-      
+
       <div className="border-t-2 mt-2 mx-3 mb-1 border-[#A673FF]"></div>
       {/* Conditional Rendering of Components */}
       <div
@@ -77,13 +79,18 @@ const RightSideBar = observer(() => {
       </div>
       <div className="border-t-2 mt-2 mx-3 mb-1 border-[#FFFFFF]"></div>
       <div className="flex gap-5 p-4">
-    
-      <div className="w-1/2 text-white text-xl text-center bg-gray-600 rounded  ms-2 p-2  hover:scale-110" onClick={handleReset}>Reset</div>
-      <div className="w-1/2 text-white text-xl text-center bg-gray-600 rounded me-2 p-2 hover:scale-110">Save</div>
+        <div
+          className="w-1/2 text-white text-xl text-center bg-gray-600 rounded  ms-2 p-2  hover:scale-110"
+          onClick={handleReset}
+        >
+          Reset
+        </div>
+        <div className="w-1/2 text-white text-xl text-center bg-gray-600 rounded me-2 p-2 hover:scale-110">
+          Save
+        </div>
       </div>
     </div>
   );
 });
 
 export default RightSideBar;
-

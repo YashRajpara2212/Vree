@@ -5,7 +5,7 @@ import ColorComponent from './ColorComponent'
 import { vreeStore } from '../VreeStore'
 import Lenses from './utils/Lenses'
 import { observer } from 'mobx-react'
-const TempleComponent = observer(() => {
+const LensesComponent = observer(() => {
   return (
     <div>
         
@@ -17,4 +17,4 @@ const TempleComponent = observer(() => {
   )
 })
 
-export default TempleComponent
+export default LensesComponent

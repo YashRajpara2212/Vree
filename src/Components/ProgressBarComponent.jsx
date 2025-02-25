@@ -203,8 +203,8 @@
 
 // export default ProgressBarComponent;
 
-import { useEffect, useState } from "react";
-import { observer } from "mobx-react"; 
+import {  useEffect, useState } from "react";
+import { observer } from "mobx-react";
 // import { div } from "three/tsl";
 
 const ProgressBarComponent = observer(({ name,value, onChange }) => {
@@ -219,7 +219,9 @@ const ProgressBarComponent = observer(({ name,value, onChange }) => {
   const [hover, setHover] = useState(false); // Hover state for label
 
   useEffect(() => {
+  console.log(value,"value");
     setSelectedIndex(valueIndex !== -1 ? valueIndex : 2);
+console.log(valueIndex,"valueIndex");
   }, [value]);
 
   const setSelected = (index) => {
@@ -311,3 +313,4 @@ const ProgressBarComponent = observer(({ name,value, onChange }) => {
 });
 
 export default ProgressBarComponent;
+

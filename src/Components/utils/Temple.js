@@ -3,15 +3,22 @@ import { vreeStore } from "../../VreeStore";
 
 class Temple {
   constructor() {
-    vreeStore.templeMesh = [
-      vreeStore.frameMesh.children[1],
-      vreeStore.frameMesh.children[3],
-    ];
-    vreeStore.templeTexture = null;
-    vreeStore.templeColor = vreeStore.templeMesh[0].material.color;
-    vreeStore.templeMetalness = vreeStore.templeMesh[0].material.metalness;
-    vreeStore.templeRoughness = vreeStore.templeMesh[0].material.roughness;
-    vreeStore.templeTransparency = vreeStore.templeMesh[0].material.opacity;
+    // vreeStore.templeMesh = [
+    //   vreeStore.frameMesh.children[1],
+    //   vreeStore.frameMesh.children[3],
+    // ];
+    vreeStore.templeTexture = "original.jpg";
+    // vreeStore.templeMesh[0].material.color = new THREE.Color(vreeStore.templeColor);
+    // vreeStore.templeMesh[1].material.color = new THREE.Color(vreeStore.templeColor);
+    vreeStore.templeMesh[0].material.metalness = vreeStore.templeMetalness;
+    vreeStore.templeMesh[1].material.metalness = vreeStore.templeMetalness;
+    vreeStore.templeMesh[0].material.roughness = vreeStore.templeRoughness;
+    vreeStore.templeMesh[1].material.roughness = vreeStore.templeRoughness;
+    vreeStore.templeMesh[0].material.transparent = true;
+    vreeStore.templeMesh[1].material.transparent = true;
+
+    vreeStore.templeMesh[0].material.opacity = 1 - vreeStore.templeTransparency;
+    vreeStore.templeMesh[1].material.opacity = 1 - vreeStore.templeTransparency;
   }
 
   static updateTempleTexture(texturePath, textureName) {

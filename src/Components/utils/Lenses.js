@@ -3,9 +3,13 @@ import { vreeStore } from "../../VreeStore";
 
 class Lenses {
   constructor() {
-    vreeStore.lensesMesh = [vreeStore.frameMesh.children[0],vreeStore.frameMesh.children[2]];
-    vreeStore.lensColor = vreeStore.lensesMesh[0].material.color;
-    vreeStore.lensTransparency = vreeStore.lensesMesh[0].material.opacity;
+    // vreeStore.lensesMesh = [vreeStore.frameMesh.children[0],vreeStore.frameMesh.children[2]];
+    // vreeStore.lensesMesh[0].material.color = new THREE.Color(vreeStore.lensColor);
+    // vreeStore.lensesMesh[1].material.color = new THREE.Color(vreeStore.lensColor);
+    vreeStore.lensesMesh[0].material.transparent = true;
+    vreeStore.lensesMesh[1].material.transparent = true;
+    vreeStore.lensesMesh[0].material.opacity = 1- vreeStore.lensTransparency;
+    vreeStore.lensesMesh[1].material.opacity = 1- vreeStore.lensTransparency;
 
 
   }

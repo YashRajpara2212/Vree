@@ -4,7 +4,7 @@ import Temple from "./utils/Temple";
 // import { Texture } from "three";
 
 const TextureComponent = ({ selectedSection }) => {
-  const [selectedTexture, setSelectedTexture] = useState(null);
+  const [selectedTexture, setSelectedTexture] = useState("original.jpg");
 
   //   /assets/texture/null_image.svg
   const textures = [
