@@ -136,14 +136,14 @@ const RightSideBar = observer(() => {
   return (
     // w-[35vw]
     <div
-      className="w-[35vw] mt-[2vh] h-[82vh] border border-[#FFFFFF] rounded-lg ms-8"
+      className="w-[35vw] mt-[2vh] h-[82vh] border border-gray-600 rounded-lg ms-8"
       style={{
         backgroundImage: "url(/assets/background/sidebarbg.png)",
         backgroundSize: "cover",
       }}
     >
       {/* Button Controls */}
-      <div className="flex justify-between w-full text-lg font-bold cursor-pointer border-b-1 border-[#A673FF] gap-4 mt-2">
+      <div className="flex justify-between w-full text-lg font-bold cursor-pointer border-b-1 border-[#A673FF] gap-4 mt-2 ">
         {/* Left button */}
         <div
           onClick={() => {
@@ -152,7 +152,7 @@ const RightSideBar = observer(() => {
             vreeStore.selectedPart = cards[newIndex].name;
           }}
           //border-2 border-[#A673FF] hover:bg-[#A673FF]
-          className=" px-4 py-2 bg-transparent flex text-gray-400 rounded-md  hover:scale-115  hover:text-white transition duration-300"
+          className={` px-4 py-2 bg-transparent flex text-gray-400 rounded-md  hover:scale-115  hover:text-white transition duration-300 ${vreeStore.isDarkMode ? "text-white" : "text-gray-900"}`} 
         >
           <div className="pt-1 me-2">
             
@@ -184,7 +184,7 @@ const RightSideBar = observer(() => {
             vreeStore.selectedPart = cards[newIndex].name;
           }}
           //border-2 border-[#A673FF] hover:bg-[#A673FF]
-          className="px-4 py-2 bg-transparent flex   text-gray-400 rounded-md  hover:scale-115 hover:text-white transition duration-300"
+          className={`px-4 py-2 bg-transparent flex   text-gray-400 rounded-md  hover:scale-115 hover:text-white transition duration-300 ${vreeStore.isDarkMode ? "text-white" : "text-gray-900"}`}
         ><div>
           {cards[getRightIndex()].name}</div><div className="pt-1 ms-2"><FaArrowRightLong /></div>
           {/* <span className="text-lg">

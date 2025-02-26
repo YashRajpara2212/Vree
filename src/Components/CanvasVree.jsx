@@ -142,7 +142,7 @@ const CanvasVree = () => {
       requestAnimationFrame(animate);
       //control update
       controls.update();
-      loaderManager.update(); // Ensure buttons follow the objects
+      // loaderManager.update(); // Ensure buttons follow the objects
 
       if (outlinemanager.composer) {
         outlinemanager.composer.render();

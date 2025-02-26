@@ -4,8 +4,9 @@ import Temple from "./utils/Temple";
 import { useState } from "react";
 import { SketchPicker } from "react-color";
 import { vreeStore } from "../VreeStore";
+import { observer } from "mobx-react";
 
-const ColorComponent = ({ selectedSection }) => {
+const ColorComponent = observer(({ selectedSection }) => {
   const [selectedColor, setSelectedColor] = useState("#FFFFFF");
   const [showColorPicker, setShowColorPicker] = useState(false); // For showing the color picker
   const [pickerPosition, setPickerPosition] = useState({ top: 0, left: 0 });
@@ -52,7 +53,7 @@ const ColorComponent = ({ selectedSection }) => {
 
   return (
     <div className="">
-      <div className="text-white text-xl font-bold">Color</div>
+      <div className={` text-xl font-bold ${vreeStore.isDarkMode ? "text-white" : "text-gray-900"}`}>Color</div>
       <div className="flex flex-col p-4">
         {/* Color palette */}
         <div className="flex flex-wrap space-x-12 mx-5 my-3 overflow-x-auto mb-4">
@@ -100,6 +101,6 @@ const ColorComponent = ({ selectedSection }) => {
       </div>
     </div>
   );
-};
+});
 
 export default ColorComponent;

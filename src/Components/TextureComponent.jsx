@@ -1,9 +1,12 @@
 import { useState } from "react";
 import Frame from "./utils/Frame";
 import Temple from "./utils/Temple";
+import { vreeStore } from "../VreeStore";
+import { observer } from "mobx-react";
+
 // import { Texture } from "three";
 
-const TextureComponent = ({ selectedSection }) => {
+const TextureComponent = observer(({ selectedSection }) => {
   const [selectedTexture, setSelectedTexture] = useState("original.jpg");
 
   //   /assets/texture/null_image.svg
@@ -42,7 +45,7 @@ const TextureComponent = ({ selectedSection }) => {
   };
   return (
     <>
-      <div className="text-white text-xl font-bold">Texture</div>
+      <div className={`text-xl font-bold ${vreeStore.isDarkMode ? "text-white" : "text-gray-900"}`}>Texture</div>
       <div className="mx-5 my-3 flex space-x-12 overflow-x-auto p-4">
         {textures.map((texture) => (
           <div
@@ -65,6 +68,6 @@ const TextureComponent = ({ selectedSection }) => {
       </div>
     </>
   );
-};
+});
 
 export default TextureComponent;

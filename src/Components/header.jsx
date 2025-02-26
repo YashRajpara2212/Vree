@@ -17,7 +17,7 @@ const Header = observer(() => {
     } else {
       // If it's light mode, set the background image to light
       document.body.style.backgroundImage =
-        "url('/assets/texture/light-background.jpg')";
+        "url('/assets/texture/light_background.png')";
       document.body.classList.remove("dark-mode");
       document.body.classList.add("light-mode");
     }

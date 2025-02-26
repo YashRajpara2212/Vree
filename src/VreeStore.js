@@ -31,7 +31,7 @@ class VreeStore {
   }
 
   toggleDarkMode() {
-    this.isDarkM = !this.isDarkMode;
+    this.isDarkMode = !this.isDarkMode;
   }
 
   resetAllProperty() {

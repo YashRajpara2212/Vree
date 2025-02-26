@@ -115,7 +115,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import { vreeStore } from "./VreeStore";
-import ButtonManager from "./ButtonManager"; // Import ButtonManager
+// import ButtonManager from "./ButtonManager"; // Import ButtonManager
 // Loader management function
 export class LoaderManager {
   constructor(scene,css2DRenderer) {
@@ -126,7 +126,7 @@ export class LoaderManager {
     };
     this.scene = null; // Will be set later
     this.onCompleteCallback = null; // Will be set to a callback that will be triggered when all assets are loaded
-    this.buttonManager = new ButtonManager(scene, css2DRenderer);
+    // this.buttonManager = new ButtonManager(scene, css2DRenderer);
   }
 
   setScene(scene) {
@@ -231,6 +231,6 @@ export class LoaderManager {
   }
   update() {
     // Update button positions to follow the 3D objects
-    this.buttonManager.update();
+    // this.buttonManager.update();
   }
 }
