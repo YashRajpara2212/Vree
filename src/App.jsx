@@ -11,17 +11,21 @@ import Header from "./Components/header";
 
 function App() {
   return (
-    <div >
-      <div> <Header/> </div>
+    <div>
+      <div>
+        
+        <Header />
+      </div>
       <div className="flex">
-      <CanvasVree />
-      <RightSideBar />
-      {/* <TempleComponent /> */}
-      {/* <FrameComponent /> */}
-      {/* <LensesComponent /> */}
-      {/* <TextureComponent selectedSection="frame" /> */}
-      {/* <ColorComponent selectedSection="frame" /> */}
-      {/* <ProgressBar /> */}
+        <CanvasVree />
+
+        <RightSideBar />
+        {/* <TempleComponent /> */}
+        {/* <FrameComponent /> */}
+        {/* <LensesComponent /> */}
+        {/* <TextureComponent selectedSection="frame" /> */}
+        {/* <ColorComponent selectedSection="frame" /> */}
+        {/* <ProgressBar /> */}
       </div>
     </div>
   );

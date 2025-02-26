@@ -211,16 +211,17 @@ export class LoaderManager {
       this.scene.environment = this.loadedAssets.environmentTexture;
 
       // Add the GLTF model to the scene
+      // console.log(this.loadedAssets.gltfModel.children[0], "gltfModel");
       const vreeObject = this.loadedAssets.gltfModel.children[0];
-      console.log(vreeObject ,"vreeObjectb");
+      // console.log(vreeObject ,"vreeObjectb");
       // debugger;
-      this.buttonManager.createButton(vreeObject, 'Frame');
-      console.log(vreeObject ,"vreeObjecta");
+      // this.buttonManager.createButton(vreeObject, 'Frame');
+      // console.log(vreeObject ,"vreeObjecta");
 
       this.scene.add(vreeObject);
-
       const temp = [...vreeObject.children];
       temp.map((child) => this.scene.add(child));
+      console.log(this.scene, "scene");
 
       // Trigger the completion callback if it exists
       if (this.onCompleteCallback) {
