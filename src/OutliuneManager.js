@@ -26,7 +26,7 @@ class OutlineManager {
     this.outlinePass = null;
 
     // Set initial part's outline when scene is created
-
+    this.selectedMesh = vreeStore.frameMesh;
     reaction(
       () => vreeStore.selectedPart,
       (selectedPart) => {
@@ -35,6 +35,9 @@ class OutlineManager {
           // debugger;
           // if (!this.outlinePass) return;
           this.outlinePass.selectedObjects = temp;
+          // if (temp && this.outlinePass) {
+          //   this.outlinePass.selectedObjects = [temp]; // Ensure it's an array
+          // }
           //   debugger;
           // if(selectedPart === "frame"){this.outlinePass.selectedObjects =[vreeStore.frameMeshOutline];}
           // if(selectedPart === "lenses"){this.outlinePass.selectedObjects = vreeStore.lensesMesh;}

@@ -305,7 +305,7 @@ const [addLabelsToScene, setAddLabelsToScene] = useState(null);
     //     const css2DRenderer = new CSS2DRenderer();
     // css2DRenderer.setSize(window.innerWidth * 0.6, window.innerHeight);
     // css2DRenderer.domElement.style.position = 'absolute';
-    // css2DRenderer.domElement.style.top = '0px';
+    // css2DRenderer.domElement.style.top =OutlineManager '0px';
     // css2DRenderer.domElement.style.zIndex = '10';
     // document.body.appendChild(css2DRenderer.domElement); // Attach to the DOM
     //

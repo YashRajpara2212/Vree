@@ -9,19 +9,19 @@ class VreeStore {
   lensesMesh = [];
   templeMesh = [];
 
-  lensColor = "#ffffff";
+  lensColor = "#FFFFFF";
   lensTransparency = 0.8;
 
-  templeTexture = null;
+  templeTexture = "original.jpg";
   templeIntialTexture = null;
-  templeColor = "#ffffff";
+  templeColor = "#FFFFFF";
   templeMetalness = 0.1;
   templeRoughness = 0.2;
   templeTransparency = 0;
 
-  frameTexture = null;
+  frameTexture = "original.jpg";
   frameIntialTexture = null;
-  frameColor = "#ffffff";
+  frameColor = "#FFFFFF";
   frameMetalness = 0.2;
   frameRoughness = 0.1;
   frameTransparency = 0;
@@ -39,7 +39,8 @@ class VreeStore {
   // }
 
   resetAllProperty() {
-    this.lensColor = "#ffffff";
+    this.selectedPart = "frame"
+    this.lensColor = "#FFFFFF";
     this.lensesMesh[0].material.color = new THREE.Color("#ffffff");
     this.lensesMesh[1].material.color = new THREE.Color("#ffffff");
     // //
@@ -52,7 +53,7 @@ class VreeStore {
     this.frameMesh[0].material.map = this.frameIntialTexture;
 
     // //
-    this.frameColor = "#ffffff";
+    this.frameColor = "#FFFFFF";
     this.frameMesh[0].material.color = new THREE.Color("#ffffff");
     // //
     this.frameMetalness = 0.2;
@@ -69,7 +70,7 @@ class VreeStore {
     this.templeMesh[0].material.map = this.templeIntialTexture;
     this.templeMesh[1].material.map = this.templeIntialTexture;
     // //
-    this.templeColor = "#ffffff";
+    this.templeColor = "#FFFFFF";
     this.templeMesh[0].material.color = new THREE.Color("#ffffff");
     this.templeMesh[1].material.color = new THREE.Color("#ffffff");
     // //

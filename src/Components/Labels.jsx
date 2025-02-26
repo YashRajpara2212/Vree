@@ -137,13 +137,7 @@ const Labels = observer(({ addToScene }) => {
               ? templeRef
               : lensesRef
           }
-          className={`label-button flex items-center gap-1 px-3 py-2 bg-red-200 rounded-full border shadow-lg transition-all bg-purple-600 border-purple-300 text-black shadow-md
-            ${
-              vreeStore.selectedPart === label
-                ? "bg-purple-600 border-purple-300 text-black shadow-md" // Highlight when selected
-                : "bg-purple-900 border-purple-400 text-black"
-            }
-            `}
+          className={`label-button flex items-center gap-1 px-3 py-2 bg-red-200 rounded-full border shadow-lg transition-all bg-purple-600 border-purple-300 text-black shadow-md ${ vreeStore.selectedPart === label ? "bg-purple-600 border-purple-300 text-black shadow-md": "bg-purple-900 border-purple-400 text-black" }`}
           style={{ pointerEvents: "auto", zIndex: 100 }}
           onClick={btnHandler(label)} // Update state on click
         >
