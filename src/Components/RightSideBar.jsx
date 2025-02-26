@@ -92,7 +92,7 @@ const handleSave = () =>{
           onClick={() => {
             const newIndex = getRightIndex();
             setCurrentIndex(newIndex);
-            vreeStore.selectedPart = cards[newIndex].name;
+            vreeStore.selectedPart = cards[newIndex].name ;
           }}
           //border-2 border-[#A673FF] hover:bg-[#A673FF]
           className={`px-4 py-2 bg-transparent flex   text-gray-400 rounded-md  hover:scale-115 hover:text-white transition duration-300 ${vreeStore.isDarkMode ? "text-white" : "text-gray-900"}`}

@@ -34,6 +34,10 @@ class VreeStore {
     this.isDarkMode = !this.isDarkMode;
   }
 
+  // setSelectedPart(part){
+  //   this.selectedPart = part;
+  // }
+
   resetAllProperty() {
     this.lensColor = "#ffffff";
     this.lensesMesh[0].material.color = new THREE.Color("#ffffff");
@@ -140,6 +144,12 @@ class VreeStore {
 }
 
 export const vreeStore = new VreeStore();
+
+
+
+
+
+
 // import { makeAutoObservable } from "mobx";
 // import * as THREE from "three";
 
