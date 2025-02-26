@@ -39,6 +39,22 @@ const CanvasVree = () => {
     const ambientLight = new THREE.AmbientLight(0xffffff, 10);
     scene.add(ambientLight);
 
+    const textureLoader = new THREE.TextureLoader();
+    const simpleShadow = textureLoader.load("/assets/planeTexture/unnamed.jpg");
+    const sphereShadow = new THREE.Mesh(
+      new THREE.PlaneGeometry(1, 1),
+      new THREE.MeshBasicMaterial({
+        color: 0x000000,
+        transparent: true,
+        alphaMap: simpleShadow,
+      })
+    );
+    sphereShadow.rotation.x = -Math.PI * 0.5;
+    sphereShadow.position.set(0, -0.5, -0.9);
+    sphereShadow.scale.set(5, 3.5, 5);
+    scene.add(sphereShadow);
+    console.log(simpleShadow, "simpleShadow");
+
     //All Loader
 
     //Texture Loader
@@ -137,7 +153,7 @@ const CanvasVree = () => {
     controls.enableDamping = true; // Optional: Enables smooth camera movements
     controls.dampingFactor = 0.25; // Optional: Sets the speed of damping
     controls.screenSpacePanning = false; // Optional: Prevents panning in the screen space
-    console.log(scene, "scene");
+    console.log(scene, "scene1");
     const animate = () => {
       requestAnimationFrame(animate);
       //control update

@@ -11,7 +11,7 @@ const TempleComponent = observer(() => {
     <div>
         <TextureComponent selectedSection="temple"/>
         <ColorComponent selectedSection="temple"/>
-        <div className="text-white text-xl font-bold mb-10">Material Properties</div>
+        <div className={` text-xl font-bold mb-10 ${vreeStore.isDarkMode ? "text-white" : "text-gray-900"}`}>Material Properties</div>
         <ProgressBarComponent name="Metallic" value ={vreeStore.templeMetalness} onChange={Temple.updateTempleMetalness} />
         <ProgressBarComponent name="Roughness" value ={vreeStore.templeRoughness} onChange={Temple.updateTempleRoughness} />
         <ProgressBarComponent name="Transparency" value ={vreeStore.templeTransparency} onChange={Temple.updateTempleTransparency} />

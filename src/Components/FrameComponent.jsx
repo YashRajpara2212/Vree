@@ -11,7 +11,7 @@ const FrameComponent = observer(() => {
     <div>
         <TextureComponent selectedSection="frame"/>
         <ColorComponent selectedSection="frame"/>
-        <div className="text-white text-xl font-bold mb-10">Material Properties</div>
+        <div className={` text-xl font-bold mb-10 ${vreeStore.isDarkMode ? "text-white" : "text-gray-900"}`}>Material Properties</div>
         <ProgressBarComponent name="Metallic" value ={vreeStore.frameMetalness} onChange={Frame.updateFrameMetalness} />
         <ProgressBarComponent name="Roughness" value ={vreeStore.frameRoughness} onChange={Frame.updateFrameRoughness} />
         <ProgressBarComponent  name="Transparency" value ={vreeStore.frameTransparency} onChange={Frame.updateFrameTransparency} />

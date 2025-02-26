@@ -102,6 +102,8 @@ import { vreeStore } from "../VreeStore";
 import { observer } from "mobx-react";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { GrPowerReset } from "react-icons/gr";
+import { MdSave } from "react-icons/md";
 
 const cards = [
   { name: "frame", component: <FrameComponent /> },
@@ -210,13 +212,14 @@ const RightSideBar = observer(() => {
       <div className="border-t-2 mt-2 mx-3 mb-1 border-[#FFFFFF]"></div>
       <div className="flex gap-5 p-4">
         <div
-          className="w-1/2 text-white text-xl text-center bg-gray-600 rounded  ms-2 p-2  hover:scale-110"
+          className={`w-1/2 flex  text-xl text-center  rounded justify-center gap-2 ms-2 p-2  hover:scale-110 ${vreeStore.isDarkMode ? "bg-gray-600 text-white" : "text-gray-900 bg-gray-200"} `}
           onClick={handleReset}
         >
-          Reset
+         <div className="mt-1"><GrPowerReset /></div> <div>Reset</div>
         </div>
-        <div className="w-1/2 text-white text-xl text-center bg-gray-600 rounded me-2 p-2 hover:scale-110">
-          Save
+        <div className="w-1/2  flex text-[#A673FF] text-xl  justify-center gap-2 text-center bg-transparent border-1   border-[#A673FF] rounded me-2 p-2 hover:scale-110">
+         <div className="mt-1"><MdSave />
+         </div> <div>Save</div>
         </div>
       </div>
     </div>

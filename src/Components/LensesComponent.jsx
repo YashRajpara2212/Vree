@@ -10,7 +10,7 @@ const LensesComponent = observer(() => {
     <div>
         
         <ColorComponent selectedSection="lense"/>
-        <div className="text-white text-xl font-bold mb-10">Material Properties</div>
+        <div className={` text-xl font-bold mb-10 ${vreeStore.isDarkMode ? "text-white" : "text-gray-900"}`}>Material Properties</div>
         <ProgressBarComponent name="Transparency" value ={vreeStore.lensTransparency} onChange={Lenses.updateLensesTransparency} />
       
     </div>

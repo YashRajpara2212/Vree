@@ -205,6 +205,8 @@
 
 import {  useEffect, useState } from "react";
 import { observer } from "mobx-react";
+import { vreeStore } from "../VreeStore";
+
 // import { div } from "three/tsl";
 
 const ProgressBarComponent = observer(({ name,value, onChange }) => {
@@ -242,7 +244,7 @@ console.log(valueIndex,"valueIndex");
   return (
     // items-center
     <div className="flex">
-        <div className="text-white text-lg ms-5 mt-5 me-10">{name}</div>
+        <div className={` text-lg ms-5 mt-5 me-10 ${vreeStore.isDarkMode ? "text-white" : "text-gray-900"}`}>{name}</div>
     <div className="flex flex-col  w-full flex-grow gap-4 mt-10 px-2">
       <div className="relative flex items-center w-full max-w-lg">
         <div className="absolute left-0 right-0 h-1 bg-gray-500 rounded-full " />
