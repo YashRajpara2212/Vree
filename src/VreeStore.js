@@ -82,6 +82,61 @@ class VreeStore {
     this.templeMesh[0].material.opacity = 0.1;
     this.templeMesh[1].material.opacity = 0.1;
   }
+  saveAllProperty() {
+    // Prepare the data for download
+    const jsonData = {
+      glbUrl: "./assets/glbs/sampleModel.glb",
+      groups: [
+        {
+          displayName: "Frame",
+          meshNode: ["frame"],
+          selectedTexture: this.frameTexture || "original.jpg",
+          selectedColor: this.frameColor,
+          roughness: this.frameRoughness,
+          metalness: this.frameMetalness,
+          transparency: this.frameTransparency,
+          availableTextures: ["original.jpg", "texture1.png", "texture3.jpg"],
+        },
+        {
+          displayName: "Temple",
+          meshNode: ["left_temple", "right_temple"],
+          selectedTexture: this.templeTexture || "original.jpg",
+          selectedColor: this.templeColor,
+          roughness: this.templeRoughness,
+          metalness: this.templeMetalness,
+          transparency: this.templeTransparency,
+          availableTextures: ["original.jpg", "texture1.png", "texture2.jpg"],
+        },
+        {
+          displayName: "Lenses",
+          meshNode: ["left_lens", "right_lens"],
+          
+          selectedColor: this.lensColor,
+          
+          transparency: this.lensTransparency,
+        },
+      ],
+      textures: ["original.jpg", "texture1.png", "texture2.jpg", "texture3.jpg"],
+      colors: [
+        "#FFFFFF",
+        "#D5BC93",
+        "#AC252B",
+        "#185848",
+        "#025D98",
+        "#D2A693",
+        "Custom",
+      ],
+    };
+
+    // Convert to Blob and create a link to trigger the download
+    const blob = new Blob([JSON.stringify(jsonData, null, 2)], {
+      type: "application/json",
+    });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "model_config.json"; // Set the default file name
+    link.click();
+  }
 }
 
 export const vreeStore = new VreeStore();

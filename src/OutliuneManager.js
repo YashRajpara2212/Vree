@@ -25,6 +25,8 @@ class OutlineManager {
     this.composer = null;
     this.outlinePass = null;
 
+    // Set initial part's outline when scene is created
+
     reaction(
       () => vreeStore.selectedPart,
       (selectedPart) => {
@@ -40,6 +42,7 @@ class OutlineManager {
         }
       }
     );
+    this.setupOutline();
   }
 
   setupOutline() {
@@ -89,8 +92,10 @@ class OutlineManager {
     // Force initial render
     this.composer.render();
   }
+
+  // debugger;
   getSelectedMesh() {
-    // debugger;
+    
     switch (vreeStore.selectedPart) {
       case "frame":
         return vreeStore.frameMesh;
