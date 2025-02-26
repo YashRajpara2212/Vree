@@ -7,10 +7,13 @@ import FrameComponent from "./Components/FrameComponent";
 import TempleComponent from "./Components/TempleComponent";
 import LensesComponent from "./Components/LensesComponent";
 import RightSideBar from "./Components/RightSideBar";
+import Header from "./Components/header";
 
 function App() {
   return (
-    <div className="flex">
+    <div >
+      <div> <Header/> </div>
+      <div className="flex">
       <CanvasVree />
       <RightSideBar />
       {/* <TempleComponent /> */}
@@ -19,6 +22,7 @@ function App() {
       {/* <TextureComponent selectedSection="frame" /> */}
       {/* <ColorComponent selectedSection="frame" /> */}
       {/* <ProgressBar /> */}
+      </div>
     </div>
   );
 }

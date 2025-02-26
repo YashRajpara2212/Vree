@@ -78,7 +78,7 @@ const CanvasVree = () => {
       canvas: canvasRef.current,
       alpha: true,
     });
-    renderer.setSize(window.innerWidth * 0.6, window.innerHeight);
+    renderer.setSize(window.innerWidth * 0.6, window.innerHeight*0.9);
     //
 //     const css2DRenderer = new CSS2DRenderer();
 // css2DRenderer.setSize(window.innerWidth * 0.6, window.innerHeight);
@@ -137,7 +137,7 @@ console.log(scene, "scene");
 
     // Handle window resizing
     const handleResize = () => {
-      camera.aspect = (window.innerWidth * 0.6) / window.innerHeight;
+      camera.aspect = (window.innerWidth * 0.6) / window.innerHeight*0.9;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
@@ -150,7 +150,7 @@ console.log(scene, "scene");
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="webgl" />;
+  return <canvas ref={canvasRef} className="webgl " />;
 };
 
 export default CanvasVree;

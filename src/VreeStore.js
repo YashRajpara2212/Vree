@@ -3,6 +3,7 @@ import * as THREE from "three";
 
 class VreeStore {
   selectedPart = "frame";
+  isDarkMode = true;
   frameMesh = [];
   frameMeshOutline = [];
   lensesMesh = [];
@@ -27,6 +28,10 @@ class VreeStore {
 
   constructor() {
     makeAutoObservable(this);
+  }
+
+  toggleDarkMode() {
+    this.isDarkM = !this.isDarkMode;
   }
 
   resetAllProperty() {
