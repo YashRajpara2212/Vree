@@ -26,15 +26,7 @@ export class LoaderManager {
     this.onCompleteCallback = callback;
   }
 
-  // Function to load a texture (background)
-  // loadTexture(path) {
-  //   const loader = new THREE.TextureLoader();
-  //   loader.load(path, (texture) => {
-  //     texture.colorSpace = THREE.SRGBColorSpace;
-  //     this.loadedAssets.backgroundTexture = texture;
-  //     this.checkAssetsLoaded();
-  //   });
-  // }
+  
 
   // Function to load the environment HDR texture
   loadEnvironmentTexture(path) {
@@ -59,26 +51,16 @@ export class LoaderManager {
 
       vreeStore.lensesMesh = [tempMesh.children[0], tempMesh.children[2]];
       vreeStore.templeMesh = [tempMesh.children[1], tempMesh.children[3]];
-      // this.buttonManager.createButton(vreeStore.lensesMesh[0], 'Lenses');
-      // this.buttonManager.createButton(vreeStore.templeMesh[0], 'Temple');
+    
       vreeStore.frameIntialTexture =
         this.loadedAssets.gltfModel.children[0].material.map;
       vreeStore.templeIntialTexture =
         this.loadedAssets.gltfModel.children[0].children[1].material.map;
       console.log(this.loadedAssets.gltfModel.children[0], "gltfModel");
 
+      //for displayind g outline of frame , becuause initially framemesh is not get.
       vreeStore.selectedPart = "temple";
-      // vreeStore.frameMesh = [this.loadedAssets.gltfModel.children[0]];
-
-      //temporary remove children mesh  of parent mesh
-      // frameMeshClone.children = [];
-      // vreeStore.frameMeshOutline = [vreeStore.frameMesh];
-      // console.log(frameMeshClone, "frameMeshClone");
-      // console.log(vreeStore.frameMeshOutline, "frameMeshOutline");
-
-      // console.log(vreeStore.lensesMesh, "lense");
-      // console.log(vreeStore.templeMesh, "temple");
-
+      
       this.checkAssetsLoaded();
     });
   }
@@ -105,10 +87,7 @@ export class LoaderManager {
       // Add the GLTF model to the scene
       // console.log(this.loadedAssets.gltfModel.children[0], "gltfModel");
       const vreeObject = this.loadedAssets.gltfModel.children[0];
-      // console.log(vreeObject ,"vreeObjectb");
-      // debugger;
-      // this.buttonManager.createButton(vreeObject, 'Frame');
-      // console.log(vreeObject ,"vreeObjecta");
+      
 
       this.scene.add(vreeObject);
       const temp = [...vreeObject.children];
@@ -124,3 +103,4 @@ export class LoaderManager {
   }
  
 }
+
