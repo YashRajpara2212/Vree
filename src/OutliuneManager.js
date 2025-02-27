@@ -32,16 +32,9 @@ class OutlineManager {
       (selectedPart) => {
         if (selectedPart) {
           const temp = this.getSelectedMesh();
-          // debugger;
-          // if (!this.outlinePass) return;
+         
           this.outlinePass.selectedObjects = temp;
-          // if (temp && this.outlinePass) {
-          //   this.outlinePass.selectedObjects = [temp]; // Ensure it's an array
-          // }
-          //   debugger;
-          // if(selectedPart === "frame"){this.outlinePass.selectedObjects =[vreeStore.frameMeshOutline];}
-          // if(selectedPart === "lenses"){this.outlinePass.selectedObjects = vreeStore.lensesMesh;}
-          // if(selectedPart === "temple"){this.outlinePass.selectedObjects = vreeStore.templeMesh;}
+        
         }
       }
     );
@@ -54,13 +47,7 @@ class OutlineManager {
       this.dispose();
     }
 
-    // if (!this.outlinePass.selectedObjects) {
-    //   console.log("not get outline object");
-    // } else {
-    //   console.log(this.outlinePass.selectedObjects, "hi");
-    // }
-
-    // debugger;
+ 
     const selectedMesh = this.getSelectedMesh();
     if (!selectedMesh) return;
 

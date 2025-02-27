@@ -3,13 +3,12 @@
 import { useRef, useEffect } from "react";
 import { CSS2DObject } from "three/examples/jsm/renderers/CSS2DRenderer";
 import { observer } from "mobx-react";
-// import tailwindcss from "@tailwindcss/vite";
-// import { vreeStore } from "../VreeStore";
+
 import { vreeStore } from "../VreeStore";
-// import { add } from "three/tsl";
+
 
 const Labels = observer(({ addToScene }) => {
-  // const [selected, setSelected] = useState(SpecMaterialStore.selectedElement); // Track selected button
+  
   const frameRef = useRef(null);
   const templeRef = useRef(null);
   const lensesRef = useRef(null);
@@ -31,12 +30,7 @@ const Labels = observer(({ addToScene }) => {
       frameLabel.position.set(0, -0.2, 0);
       templeLabel.position.set(1.2, -0.3, -1);
       lensesLabel.position.set(0.6, -0.35, 0);
-      // Check if addToScene is a function and call it correctly
-      //   if (addToScene && typeof addToScene.current === "function") {
-      //     addToScene.current([frameLabel, templeLabel, lensesLabel]);
-      //   } else {
-      //     console.error("addToScene is not a function");
-      //   }
+      
       addToScene([frameLabel, templeLabel, lensesLabel]);
     }
   }, []);
@@ -76,14 +70,7 @@ const Labels = observer(({ addToScene }) => {
             readOnly
           />
 
-          {/* Bigger radio button with thinner border */}
-          {/* <div className="w-4 h-4 border-[1.5px] border-2 border-purple-300 rounded-full flex items-center justify-center">
-            <div
-              className={`w-2 h-2 rounded-full ${
-                vreeStore.selectedPart === label ? "bg-white" : "bg-transparent"
-              }`}
-            ></div>
-          </div> */}
+        
           <span className={`${vreeStore.isDarkMode? "text-white font-medium " :"text-black font-medium "}`}>{label}</span>
         </div>
         

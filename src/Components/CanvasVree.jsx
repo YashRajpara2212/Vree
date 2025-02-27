@@ -44,6 +44,7 @@ const CanvasVree = () => {
     const ambientLight = new THREE.AmbientLight(0xffffff, 10);
     scene.add(ambientLight);
 
+    //Plane below Goggles
     const textureLoader = new THREE.TextureLoader();
     const simpleShadow = textureLoader.load("/assets/planeTexture/unnamed.jpg");
     const sphereShadow = new THREE.Mesh(
@@ -58,15 +59,18 @@ const CanvasVree = () => {
     sphereShadow.position.set(0, -0.5, -0.9);
     sphereShadow.scale.set(5, 3.5, 5);
     scene.add(sphereShadow);
-    console.log(simpleShadow, "simpleShadow");
+   
 
     
-
+//Renderer
     const renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.current,
       alpha: true,
     });
     renderer.setSize(window.innerWidth * 0.6, window.innerHeight * 0.9);
+
+
+    //CSS2DRenderer for Labels
     
     const labelRenderer = new CSS2DRenderer();
     labelRenderer.setSize(
@@ -81,6 +85,7 @@ const CanvasVree = () => {
     //
     canvasRef.current.parentElement.appendChild(labelRenderer.domElement);
 
+
     // Set the addLabelsToScene function to the useRef
     const addLabelsToSceneFunction = (labels) => {
       labels.forEach((label) => scene.add(label));
@@ -88,8 +93,11 @@ const CanvasVree = () => {
 
     setAddLabelsToScene(() => addLabelsToSceneFunction);
 
-    // Create loader manager
+
+
+    // Create loader manager for loading texture and environment.
     const loaderManager = new LoaderManager(scene, new CSS2DRenderer());
+    // Set a callback to be triggered when everything is loaded
     loaderManager.setOnCompleteCallback(() => {
       const frame = new Frame();
       const lense = new Lenses();
@@ -101,30 +109,31 @@ const CanvasVree = () => {
     });
     loaderManager.setScene(scene); // Set the scene for the loader manager
 
-    // Set a callback to be triggered when everything is loaded
 
     // Load assets
-    // loaderManager.loadTexture("/assets/background/background.png");
+    
     loaderManager.loadEnvironmentTexture(
       "/assets/environment/brown_photostudio_02_1k.hdr"
     );
-    // debugger;
+    
     loaderManager.loadGLTFModel("/assets/glbs/sampleModel.glb");
 
+
+    //Outlinemanager for outline
     const outlinemanager = new OutlineManager(scene, camera, renderer);
 
     outlinemanager.setupOutline();
-    //
+    
 
-    //
-
-    console.log(outlinemanager.outlinePass);
+    //OrbitControls
 
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true; // Optional: Enables smooth camera movements
     controls.dampingFactor = 0.25; // Optional: Sets the speed of damping
     controls.screenSpacePanning = false; // Optional: Prevents panning in the screen space
-    console.log(scene, "scene1");
+    
+
+    //animate function for rendering.
     const animate = () => {
       requestAnimationFrame(animate);
       //control update
@@ -136,13 +145,13 @@ const CanvasVree = () => {
       } else {
         renderer.render(scene, camera);
       }
-      // Render 2D buttons with CSS2DRenderer
-      // css2DRenderer.render(scene, camera);
+      // Render 2D buttons with CSS2DRenderer from labelrendrer
+      
       labelRenderer.render(scene, camera);
-      // outlinemanager.composer.render();
+    
     };
 
-    // animate();
+ 
 
     // Handle window resizing
     const handleResize = () => {
