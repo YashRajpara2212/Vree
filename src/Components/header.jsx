@@ -24,12 +24,12 @@ const Header = observer(() => {
   };
 
   return (
-    <div className="flex justify-between">
+    <div className={`${vreeStore.rightSideVisibility?"flex w-[100vw] justify-between":"hidden"}`}>
       <div className="ms-3 mt-[1vh]">
         <img className="h-[8vh]" src="/assets/logo/logo.svg" alt="logo" />
       </div>
-      <div className="mt-3">
-        <img src="assets/icons/sun.png" alt="light" onClick={toggleMode} />
+      <div className="mt-3 me-5">
+        <img src={vreeStore.isDarkMode? "assets/icons/sun.png" : "assets/icons/moon.png"} alt="light" onClick={toggleMode} />
       </div>
     </div>
   );

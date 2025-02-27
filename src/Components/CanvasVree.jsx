@@ -337,6 +337,7 @@ const [addLabelsToScene, setAddLabelsToScene] = useState(null);
       const frame = new Frame();
       const lense = new Lenses();
       const temple = new Temple();
+      vreeStore.rightSideVisibility=true;
 
       // After all assets are loaded, you can start animating/rendering
       animate();
@@ -356,6 +357,7 @@ const [addLabelsToScene, setAddLabelsToScene] = useState(null);
     const outlinemanager = new OutlineManager(scene, camera, renderer);
     
     outlinemanager.setupOutline();
+  
     console.log(outlinemanager.outlinePass);
 
     const controls = new OrbitControls(camera, renderer.domElement);

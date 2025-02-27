@@ -3,6 +3,7 @@ import * as THREE from "three";
 
 class VreeStore {
   selectedPart = "frame";
+  rightSideVisibility = false;
   isDarkMode = true;
   frameMesh = [];
   frameMeshOutline = [];
